@@ -1,7 +1,22 @@
 // TODO: Include packages needed for this application
+//ßconst { writeFile } = require('./src/generateReadMe.js');
 const inquirer = require('inquirer');
+const fs = require('fs');
 const generateMarkdown = require('./utils/generateMarkdown');
 // TODO: Create an array of questions for user input
+// const mockData = {
+//     title: 'The Greatest Test ReadMe',
+//     description: 'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
+//     headers: ['Installation', 'Usage', 'License', 'Contributors', 'Tests'],
+//     installation: 'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
+//     usage: 'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.',
+//     license: 'MIT',
+//     contributors: 'Big thanks to Clu-Codes',
+//     test: 'Duis consectetur nunc nunc. Morbi finibus non sapien nec pharetra. Fusce nec dignissim orci, ac interdum ipsum. Morbi mattis justo sed commodo pellentesque. Nulla eget fringilla nulla. Integer gravida magna mi, id efficitur metus tempus et.'
+// }
+// =================================================
+// UNCOMMENT THIS WHEN YOU WANT TO RUN LIVE VERSION
+// =================================================
 const questions = [
     {
         type: 'input',
@@ -31,7 +46,7 @@ const questions = [
     },
     {
         type: 'confirm',
-        name: 'contents',
+        name: 'table',
         message: 'Do you want to enter a table of contents for this application? (Helpful for long Readmes)',
         default: true
     },
@@ -39,7 +54,7 @@ const questions = [
         type: 'checkbox',
         name: 'headers',
         choices: ['Installation', 'Usage', 'License', 'Contributors', 'Tests'],
-        when: (response) => response.contents === true
+        when: (response) => response.table === true
     },
     {
         type: 'input',
@@ -68,30 +83,22 @@ const questions = [
         }
     },
     {
-        type: 'input',
+        type: 'list',
         name: 'license',
         message: 'What is the license of your application?',
-        validate: licenseInput => {
-            if (licenseInput) {
-                return true;
-            } else {
-                console.log('Nothing was entered. Please detail the license status of your application.')
-                return false;
-            }
-        }
+        choices: ['GNU/GPL', 'MIT', 'Creative Commons'],
+    },
+    {
+        type: 'confirm',
+        name: 'confirmContributing',
+        message: 'Do you want to add a way for others to contribute to this project?',
+        default: true
     },
     {
         type: 'input',
-        name: 'contributors',
-        message: 'Please enter GitHub profile names of the contributors for this application.',
-        validate: githubInput => {
-            if (githubInput) {
-                return true;
-            } else {
-                console.log("No Github was entered. Please share a Github link for this project")
-                return false;
-            }
-        }
+        name: 'contributing',
+        message: 'How can developers contribute to this project?',
+        when: (answer) => answer.confirmContributing === true
     },
     {
         type: 'confirm',
@@ -108,21 +115,70 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-// Why are they passing two arguments here? I don't understand what the purpose is? I am going to need to do a fs.writeFile, which is going to contain the destination, data object, and the err function. 
-function writeToFile(fileName, data) {}
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err) {
+        if(err) {
+            return console.log(err);
+        }
+        console.log("The file was saved!");
+    }); 
+}
+
 
 // TODO: Create a function to initialize app
-function init() {}
+// function init() {}
 
 // Function call to initialize app
-init();
+// init();
 
+
+// Mock Function
+// var mockFunc = () => {
+//     console.log(mockData);
+//     const readMock = generateMarkdown(mockData);
+//     // console.log(JSON.stringify(mockData));
+//      return readMock;
+// };
+
+// mockFunc();
 
 const askUser = () => {
-    inquirer.prompt(questions);
-};
-askUser()
+    inquirer.prompt(questions)
     .then(responseData => {
         console.log(responseData);
+    writeToFile('./dist/readme.md', generateMarkdown(responseData));
         // return generateMarkdown(responseData);
-    })
+    });
+};
+
+askUser();
+
+
+// Or
+fs.writeFileSync('./dist/readme.md', 'Hey there!');
+
+// const writeFile = readContent => {
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile('./dist/readme.md', readContent, err => {
+//             if (err) {
+//                 reject(err);
+//                 return;
+//             } else {
+//                 resolve({
+//                     ok: true,
+//                     message: 'ReadMe Created!'
+//                 });
+//             };
+//         });
+//     })
+    
+// }
+
+// writeFile(mockFunc);
+// ================================================
+// UNCOMMENT THIS WHEN YOU WANT TO RUN LIVE VERSION
+// ================================================
+    
+        
+   
