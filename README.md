@@ -3,7 +3,8 @@
     
 
 ## Description
-Using Node.js, run the ReadMe Generator and fill out the prompts to quickly generate a high-quality, professional ReadMe. 
+The ReadMe Generator is designed to quickly generate a high-quality ReadMe by presenting a series of questions to address each element that every professsional ReadMe includes. Once finished with every question, the ReadMe is populated for use. 
+
 
 ## Table of Contents
 - [Installation](#Installation)
@@ -17,7 +18,7 @@ Using Node.js, run the ReadMe Generator and fill out the prompts to quickly gene
 To install, download node.js and inquirer, then fork the ReadMe from github.com/clu-codes/readme-generator. Lastly, clone it down and run the files from your CLI.
 
 ## Usage
-The ReadMe Generator is designed to quickly generate a high-quality ReadMe by presenting a series of questions to address each element that every professsional ReadMe includes. Once finished with every question, the ReadMe is populated for use. 
+Using Node.js, run the ReadMe Generator and fill out the prompts to quickly generate a high-quality, professional ReadMe. 
 
 ## License
 This application is under the MIT license.
