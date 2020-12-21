@@ -112,6 +112,32 @@ const questions = [
         message: 'Enter your test example',
         when: (answer) => answer.test === true
     },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'Please enter your Github name.',
+        validate: useInput => {
+            if (useInput) {
+                return true;
+            } else {
+                console.log('Nothing was entered. Please enter the name of your Github.')
+                return false;
+            }
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'Please share you email for others to reach out to you about your project.',
+        validate: useInput => {
+            if (useInput) {
+                return true;
+            } else {
+                console.log('Nothing was entered. Please enter your email for others to contact you.')
+                return false;
+            }
+        }
+    }
 ];
 
 // TODO: Create a function to write README file
