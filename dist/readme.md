@@ -1,9 +1,9 @@
 
-# test 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# Test 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-test
+Test
 
 ## Table of Contents
 - [Installation](#Installation)
@@ -14,16 +14,20 @@ test
 
 
 ## Installation
-test
+Test
 
 ## Usage
-test
+Test
 
 ## License
-This application is under the GNU/GPL license.
+This application is under the MIT license.
 
 ## Contributors
-test
+Test
 
+## Test
+Test
 
-
+## Questions
+Github: https://www.github.com/test
+If you have additional questions, please feel free to reach out to me at test.

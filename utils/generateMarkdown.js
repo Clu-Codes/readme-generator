@@ -4,9 +4,9 @@ const fs = require('fs');
 function renderLicenseBadge(license) {
   let userLicense = license;
   if (userLicense === 'Creative Commons') {
-    return `[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)]`
+    return `[![License: CC0-1.0](https://img.shields.io/badge/License-CC0%201.0-lightgrey.svg)](http://creativecommons.org/publicdomain/zero/1.0/)`
   } else if (userLicense === 'MIT') {
-    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]`
+    return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`
   } else {
     return `[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
   }
@@ -51,7 +51,7 @@ const titleData = (data) => {
 };
 
 const confirmTest = (data) => {
-  if (data.confirmTest) return `## Test`;
+  if (data.test) return `## Test`;
   return '';
 };
 
@@ -80,7 +80,11 @@ ${confirmContribTitle(data)}
 ${titleData(data.contributing)}
 
 ${confirmTest(data)}
-${titleData(data.test)}
+${titleData(data.example)}
+
+## Questions
+Github: https://www.github.com/${data.github}
+If you have additional questions, please feel free to reach out to me at ${data.email}.
 `;
 }
 
